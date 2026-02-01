@@ -1,0 +1,223 @@
+body {
+  background-color: #121213;
+  color: white;
+  font-family: Arial;
+  text-align: center;
+}
+
+#grid {
+  width: 260px;
+  margin: 20px auto;
+}
+
+.row {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.tile {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #3a3a3c;
+  margin-right: 5px;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 50px;
+  text-transform: uppercase;
+}
+.correct {
+  background-color: #538d4e;
+  border-color: #538d4e;
+}
+
+.present {
+  background-color: #b59f3b;
+  border-color: #b59f3b;
+}
+
+.absent {
+  background-color: #3a3a3c;
+  border-color: #3a3a3c;
+}
+@media (max-width: 600px) {
+  .tile {
+    width: 45px;
+    height: 45px;
+    font-size: 28px;
+    line-height: 45px;
+  }
+
+  #grid {
+    width: 240px;
+  }
+}
+/* ===== KEYBOARD ===== */
+#keyboard {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.key-row {
+  display: flex;
+  gap: 6px;
+}
+
+.key {
+  background: #6b5f63;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 14px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  min-width: 40px;
+  text-align: center;
+}
+
+.key.wide {
+  min-width: 70px;
+}
+
+.key:active {
+  transform: scale(0.95);
+}
+
+/* optional: color feedback */
+.key.correct {
+  background: #538d4e;
+}
+
+.key.present {
+  background: #b59f3b;
+}
+
+.key.absent {
+  background: #3a3a3c;
+}
+
+#play-again {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background: #538d4e;
+  color: white;
+  cursor: pointer;
+}
+
+#play-again:hover {
+  opacity: 0.9;
+}
+
+.hidden {
+  display: none;
+}
+/* ===== WIN MESSAGE ===== */
+#win-message {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  line-height: 1.5;
+}
+
+/* ===== PLAY AGAIN ANIMATION ===== */
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#play-again {
+  animation: popIn 0.4s ease-out;
+}
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* ===== CONFETTI ===== */
+/* ===== CONFETTI (STAR SHAPED) ===== */
+.confetti {
+  position: fixed;
+  top: -10px;
+  width: 14px;
+  height: 14px;
+  opacity: 0.9;
+  animation: fall linear forwards;
+  z-index: 9999;
+
+  /* star shape */
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+#lock-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+#lock-screen input {
+  padding: 10px;
+  font-size: 16px;
+}
+
+#lock-screen button {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+#hint-box {
+  margin: 16px 0;
+  text-align: center;
+}
+
+#hint-btn {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: none;
+  background: #6fd3ff;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#hint-text {
+  margin-top: 8px;
+  font-style: italic;
+  opacity: 0.85;
+}
+
