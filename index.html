@@ -1,45 +1,47 @@
 <!DOCTYPE html>
-<div id="lock-screen">
-  <h2> please enter your password<3 </h2>
-  <input
-    type="password"
-    id="password-input"
-    placeholder="Password"
-  />
-  <button id="unlock-btn">Unlock</button>
-  <p id="lock-error" class="hidden">Wrong password</p>
-</div>
-
-<div id="game" class="hidden">
-<html>
-  <head>
-    <title>The Ami Wordle</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Ami Wordle</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
 <body>
-  <h1>The Ami Wordle</h1>
 
-  <div id="grid"></div>
-<div id="hint-box">
-  <button id="hint-btn">Show hint</button>
-  <p id="hint-text" class="hidden"></p>
-</div>
+  <!-- 🔒 LOCK SCREEN -->
+  <div id="lock-screen">
+    <h2>please enter your password <3</h2>
+    <input
+      type="password"
+      id="password-input"
+      placeholder="Password"
+    />
+    <button id="unlock-btn">Unlock</button>
+    <p id="lock-error" class="hidden">Wrong password</p>
+  </div>
 
-  <div id="keyboard"></div>
+  <!-- 🎮 GAME -->
+  <div id="game" class="hidden">
+    <h1>The Ami Wordle</h1>
 
-<div id="win-message" class="hidden"></div>
+    <div id="grid"></div>
 
-<button id="play-again" class="hidden">Play again</button>
+    <div id="hint-box">
+      <button id="hint-btn">Show hint</button>
+      <p id="hint-text" class="hidden"></p>
+    </div>
+
+    <div id="keyboard"></div>
+
+    <div id="win-message" class="hidden"></div>
+
+    <button id="play-again" class="hidden">Play again</button>
+  </div>
+
+  <!-- 🌟 END SCREEN -->
+  <div id="end-screen" class="hidden"></div>
 
   <script src="script.js"></script>
 </body>
-<div id="end-screen" class="hidden"></div>
-
 </html>
-
-</div>
-
-
-
 
