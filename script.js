@@ -151,14 +151,20 @@ function checkRow() {
     guessedWord += letter;
 
     let status = "";
-    if (letter === secretWord[i]) status = "correct";
-    else if (secretWord.includes(letter)) status = "present";
-    else status = "absent";
+
+    if (letter === secretWord[i]) {
+      status = "correct";
+    } else if (secretWord.includes(letter)) {
+      status = "present";
+    } else {
+      status = "absent";
+    }
 
     tiles[i].classList.add(status);
     updateKeyColor(letter, status);
   }
 
+  // ✅ WIN
   if (guessedWord === secretWord) {
     gameOver = true;
 
@@ -166,18 +172,39 @@ function checkRow() {
     localStorage.setItem("usedWords", JSON.stringify(usedWords));
 
     const tries = currentRow + 1;
+
     winMessageBox.innerHTML = `
       <strong>${winMessage}</strong><br>
       You solved it in ${tries} ${tries === 1 ? "try" : "tries"}.
     `;
+
     winMessageBox.classList.remove("hidden");
 
     launchConfetti();
+
     keyboard.classList.add("fade-out");
     setTimeout(() => keyboard.classList.add("hidden"), 500);
+
+    playAgainButton.textContent = "Play again";
+    playAgainButton.classList.remove("hidden");
+    return;
+  }
+
+  // ❌ LOSS (used all rows)
+  if (currentRow === 5) {
+    gameOver = true;
+
+    winMessageBox.innerHTML = `
+      <strong>Not this time.</strong><br>
+      Want to try again with the same word?
+    `;
+    winMessageBox.classList.remove("hidden");
+
+    playAgainButton.textContent = "Try again";
     playAgainButton.classList.remove("hidden");
   }
 }
+
 
 // ===== 7. KEY COLORS =====
 function updateKeyColor(letter, status) {
@@ -247,3 +274,4 @@ keys.forEach(row => {
 playAgainButton.addEventListener("click", () => {
   location.reload();
 });
+
